@@ -1,0 +1,8 @@
+{
+  "name": "app",
+  "cwd": "/var/apps/app/current",
+  "script": "./server.js",
+  "env": {
+    "NODE_ENV": "development"
+  }
+}

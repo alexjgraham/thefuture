@@ -1,0 +1,70 @@
+{
+  "name": "skeleton",
+  "version": "1.0.0",
+  "private": false,
+  
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "watchify public/javascripts/src/main.js -d -o public/javascripts/bundle.js -v & cssnext --watch public/stylesheets/src/main.css public/stylesheets/bundle.output.css --verbose",
+    "build": "browserify public/javascripts/src/main.js -d -o public/javascripts/bundle.js && uglifyjs public/javascripts/bundle.js -o public/javascripts/bundle.js -v",
+    "build-css": "cssnext public/stylesheets/src/main.css -c public/stylesheets/bundle.output.css --verbose",
+    "build-dist": "npm run build && npm run build-css"
+  },
+  "browserify": {
+    "transform": [
+      "babelify",
+      "flow-typestrip",
+      "debowerify",
+      "browserify-shim"
+    ]
+  },
+  "browser": {
+    "react": "./node_modules/react/dist/react-with-addons.min.js",
+    "jquery": "./node_modules/jquery/dist/jquery.min.js"
+  },
+  "browserify-shim": {
+    "react": "React",
+    "jquery": "$"
+  },
+  "dependencies": {
+    "async": "1.4.2",
+    "babel": "5.8.20",
+    "bluebird": "^2.9.34",
+    "body-parser": "1.8.1",
+    "cookie-parser": "1.3.3",
+    "cssnano": "2.1.1",
+    "debug": "2.0.0",
+    "express": "4.9.0",
+    "faker": "3.0.0",
+    "flux": "2.1.1",
+    "immutable": "3.7.4",
+    "jquery": "2.1.4",
+    "morgan": "1.3.0",
+    "node-uuid": "1.4.3",
+    "object-assign": "3.0.0",
+    "react": "0.14.2",
+    "react-bootstrap-datetimepicker": "0.0.18",
+    "react-router": "1.0.0",
+    "react-select": "^0.9.1",
+    "react-widgets": "2.8.0",
+    "serve-favicon": "2.1.3",
+    "socket.io": "1.3.6",
+    "socket.io-client": "1.3.6",
+    "superagent": "1.2.0",
+    "underscore": "1.8.3"
+  },
+  "devDependencies": {
+    "babelify": "6.1.3",
+    "browserify": "11.0.0",
+    "browserify-shim": "3.8.10",
+    "colors": "1.1.2",
+    "cssnext": "1.8.2",
+    "debowerify": "1.3.1",
+    "flow-typestrip": "0.1.3",
+    "postcss": "4.1.16",
+    "shipit-deploy": "2.0.0",
+    "shipit-shared": "4.1.4",
+    "uglifyjs": "2.4.10",
+    "watchify": "3.3.0"
+  }
+}
